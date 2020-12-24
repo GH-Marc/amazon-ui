@@ -1,6 +1,23 @@
 import './styles.css';
 
+import { useStateValue } from '../../hooks/StateProvider';
+
 function Products({ id, title, image, price, rating }) {
+  const [{ basket }, dispatch] = useStateValue();
+
+  const addToBasket = () => {
+    dispatch({
+      type: 'ADD_TO_BASKET',
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+      },
+    });
+  };
+
   return (
     <div className="product">
       <div className="product__info">
@@ -22,7 +39,7 @@ function Products({ id, title, image, price, rating }) {
         alt="product_image"
       />
 
-      <button>Adicionar ao carrinho</button>
+      <button onClick={addToBasket}>Adicionar ao carrinho</button>
     </div>
   )
 }
