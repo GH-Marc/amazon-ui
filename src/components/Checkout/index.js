@@ -1,8 +1,14 @@
 import './styles.css';
 
 import Subtotal from '../Subtotal';
+import CheckoutProduct from '../CheckoutProduct';
+
+import { useStateValue } from '../../hooks/StateProvider';
+import { auth } from '../../firebase';
 
 function Checkout() {
+  const [{ basket, user }, dispatch] = useStateValue();
+
   return (
     <div className="checkout">
       <div className="checkout__left">
@@ -13,9 +19,21 @@ function Checkout() {
         />
 
         <div>
+          <h3>Olá, {user?.email}</h3>
+
           <h2 className="checkout__title">
             Seu carrinho
           </h2>
+
+          {basket.map(item => (
+            <CheckoutProduct
+              id={item.id}
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              rating={item.rating}
+            />
+          ))}
         </div>
       </div>
 
