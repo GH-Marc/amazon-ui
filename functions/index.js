@@ -12,8 +12,6 @@ app.get('/', (request, response) => response.status(200).send('Hello'));
 app.post('/payments/create', async (request, response) => {
   const total = request.query.total;
 
-  console.log('Recibo de pagamento recebido', total);
-
   const paymentIntent = await stripe.paymentIntents.create({
     amount: total,
     currency: 'BRL',
@@ -25,5 +23,3 @@ app.post('/payments/create', async (request, response) => {
 });
 
 exports.api = functions.https.onRequest(app);
-
-// http://localhost:5001/ui-1d15d/us-central1/api
