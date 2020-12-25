@@ -31,7 +31,7 @@ function Header() {
         <SearchIcon className="header__searchIcon" />
       </div>
 
-        <div className="header__nav">
+      <div className="header__nav">
         <Link
           to={!user && '/login'}
           style={{
@@ -41,7 +41,7 @@ function Header() {
 
           <div onClick={handleAuthentication} className="header__option">
             <span className="header__optionLineOne">
-              Olá, {!user ? '' : user.email}
+              Olá {!user ? '' : user.email}
             </span>
 
             <span className="header__optionLineTwo">
@@ -50,10 +50,17 @@ function Header() {
           </div>
         </Link>
 
-        <div className="header__option">
-          <span className="header__optionLineOne">Devoluções</span>
-          <span className="header__optionLineTwo">e Pedidos</span>
-        </div>
+        <Link
+          to='/orders'
+          style={{
+            textDecoration: 'none',
+            color: 'inherit'
+          }}>
+          <div className="header__option">
+            <span className="header__optionLineOne">Devoluções</span>
+            <span className="header__optionLineTwo">e Pedidos</span>
+          </div>
+        </Link>
 
         <div className="header__option">
           <span className="header__optionLineOne">Seu</span>
