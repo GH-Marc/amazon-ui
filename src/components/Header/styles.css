@@ -67,3 +67,26 @@
   margin-right: 10px;
   color: white;
 }
+
+@media (min-width: 375px) {
+  .header__logo {
+    width: 60px;
+  }
+
+  .header__optionLineOne {
+    font-size: 8px;
+  }
+
+  .header__optionLineTwo {
+    font-size: 9px;
+    font-weight: 400;
+  }
+
+  .header__searchInput {
+    height: 7px;
+  }
+
+  .header__searchIcon {
+    height: 17px !important;
+  }
+}
